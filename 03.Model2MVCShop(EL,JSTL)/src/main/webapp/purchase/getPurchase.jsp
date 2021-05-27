@@ -1,26 +1,17 @@
-<%@ page contentType="text/html; charset=EUC-KR" pageEncoding="euc-kr"%>
+<%@ page contentType="text/html; charset=EUC-KR"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%--/////////////////////// EL / JSTL 적용으로 주석 처리 ////////////////////////
-<%@ page import="com.model2.mvc.service.domain.Product" %>
+<%--
+Purchase purchase = (Purchase)request.getAttribute("purchase");
+	System.out.println("getPurchase.jsp purchase 시작");
+--%>	
 
-<%
-	Product product = (Product)request.getAttribute("product");
-	System.out.println("getProduct.jsp product 시작");
-%>	/////////////////////// EL / JSTL 적용으로 주석 처리 ////////////////////////	--%>
-
-<% %>
+<!DOCTYPE html>
 <html>
 <head>
-<title>상품목록조회</title>
+<title>구매상세조회</title>
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
-
-<script type="text/javascript">
-<!--function fncGetList(){
-	document.detailForm.submit();
-}-->
-</script>
 
 </head>
 
@@ -36,7 +27,7 @@
 				
 				<tr>
 				
-					<td width="93%" class="ct_ttl01">상품상세조회</td>
+					<td width="93%" class="ct_ttl01">구매상세조회</td>
 					<td width="20%" align="right">&nbsp;</td>
 					
 					
@@ -56,13 +47,13 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			상품번호 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			물품번호 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="105">${product.prodNo}</td>
+					<td width="105">${purchase.purchaseProd.prodNo}</td>
 				</tr>
 			</table>
 		</td>
@@ -72,60 +63,79 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			상품명 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			구매자아이디 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${product.prodName}</td>
+		<td class="ct_write01">${purchase.buyer.userId}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
-		<td width="104" class="ct_write">
-			상품이미지 <img 	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+		<td width="104" class="ct_write">구매방법</td>
+		<td bgcolor="D6D6D6" width="1"></td>
+		<td class="ct_write01">
+		<c:if test="${purchase.paymentOption.equals('1')}">
+			현금구매
+		</c:if>
+		<c:if test="${purchase.paymentOption.equals('2')}">
+			신용구매
+		</c:if>
 		</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${product.fileName}
-			<img src = "/images/uploadFiles/../../images/empty.GIF"/>
-		</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
-		<td width="104" class="ct_write">
-			상품상세정보 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
-		</td>
+		<td width="104" class="ct_write">구매자이름</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${product.prodDetail}</td>
+		<td class="ct_write01">${purchase.receiverName}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
-		<td width="104" class="ct_write">제조일자</td>
+		<td width="104" class="ct_write">구매자연락처</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${product.manuDate}</td>
+		<td class="ct_write01">${purchase.receiverPhone}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
-		<td width="104" class="ct_write">가격</td>
+		<td width="104" class="ct_write">구매자주소</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${product.price}</td>
+		<td class="ct_write01">${purchase.divyAddr} %></td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
-		<td width="104" class="ct_write">등록일자</td>
+		<td width="104" class="ct_write">구매요청사항</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${product.regDate}</td>
+		<td class="ct_write01">${purchase.divyRequest}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
+	<tr>
+		<td width="104" class="ct_write">배송희망일</td>
+		<td bgcolor="D6D6D6" width="1"></td>
+		<td class="ct_write01">${purchase.divyDate}</td>
+	</tr>
+	<tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+	<tr>
+		<td width="104" class="ct_write">주문일</td>
+		<td bgcolor="D6D6D6" width="1"></td>
+		<td class="ct_write01">${purchase.orderDate}</td>
+	</tr>
+	<tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+	
+	
 </table>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top: 10px;">
@@ -140,26 +150,19 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-						
-						<c:if test="${menu =='manage'}">
-						<a href="/product/updateProductView.do?prodNo=${product.prodNo}">수정</a>
-						</c:if>
-						
-						<c:if test="${param.menu =='search'}">
-						<a href="/addPurchaseView.do?prodNo=${product.prodNo}">구매</a>
-						</c:if>
-		
+					<a href="/updatePurchaseView.do?tranNo=${purchase.tranNo}">수정</a>
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23">
 				</td>
 				<td width="30"></td>
 				
+	
 				<td width="17" height="23">
-				  	<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
+					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-					<a href="javascript:history.go(-1)">이전</a>
+					<a href="javascript:history.go(-1)">확인</a>
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23">

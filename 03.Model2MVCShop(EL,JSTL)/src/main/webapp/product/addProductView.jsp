@@ -1,9 +1,9 @@
-<%@ page contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
 
 
 <html>
 <head>
-<title>ìƒí’ˆë“±ë¡</title>
+<title>»óÇ°µî·Ï</title>
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
@@ -13,26 +13,26 @@
 <script type="text/javascript">
 <!--
 function fncAddProduct(){
-	//Form ìœ íš¨ì„± ê²€ì¦
+	//Form À¯È¿¼º °ËÁõ
  	var name = document.detailForm.prodName.value;
 	var detail = document.detailForm.prodDetail.value;
 	var manuDate = document.detailForm.manuDate.value;
 	var price = document.detailForm.price.value;
 
 	if(name == null || name.length<1){
-		alert("ìƒí’ˆëª…ì€ ë°˜ë“œì‹œ ì…ë ¥í•˜ì—¬ì•¼ í•©ë‹ˆë‹¤.");
+		alert("»óÇ°¸íÀº ¹İµå½Ã ÀÔ·ÂÇÏ¿©¾ß ÇÕ´Ï´Ù.");
 		return;
 	}
 	if(detail == null || detail.length<1){
-		alert("ìƒí’ˆìƒì„¸ì •ë³´ëŠ” ë°˜ë“œì‹œ ì…ë ¥í•˜ì—¬ì•¼ í•©ë‹ˆë‹¤.");
+		alert("»óÇ°»ó¼¼Á¤º¸´Â ¹İµå½Ã ÀÔ·ÂÇÏ¿©¾ß ÇÕ´Ï´Ù.");
 		return;
 	}
 	if(manuDate == null || manuDate.length<1){
-		alert("ì œì¡°ì¼ìëŠ” ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
+		alert("Á¦Á¶ÀÏÀÚ´Â ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
 		return;
 	}
 	if(price == null || price.length<1){
-		alert("ê°€ê²©ì€ ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
+		alert("°¡°İÀº ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
 		return;
 	}
 
@@ -59,7 +59,7 @@ function resetData(){
 		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="93%" class="ct_ttl01">ìƒí’ˆë“±ë¡</td>
+					<td width="93%" class="ct_ttl01">»óÇ°µî·Ï</td>
 					<td width="20%" align="right">&nbsp;</td>
 				</tr>
 			</table>
@@ -76,7 +76,7 @@ function resetData(){
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			ìƒí’ˆëª… <imgsrc="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			»óÇ°¸í <imgsrc="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
@@ -95,7 +95,7 @@ function resetData(){
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			ìƒí’ˆìƒì„¸ì •ë³´ <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			»óÇ°»ó¼¼Á¤º¸ <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
@@ -108,7 +108,7 @@ function resetData(){
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			ì œì¡°ì¼ì <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			Á¦Á¶ÀÏÀÚ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
@@ -123,19 +123,19 @@ function resetData(){
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			ê°€ê²© <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			°¡°İ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input type="text" name="price" 	class="ct_input_g" 
-						style="width: 100px; height: 19px" maxLength="10">&nbsp;ì›
+						style="width: 100px; height: 19px" maxLength="10">&nbsp;¿ø
 		</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
-		<td width="104" class="ct_write">ìƒí’ˆì´ë¯¸ì§€</td>
+		<td width="104" class="ct_write">»óÇ°ÀÌ¹ÌÁö</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input		type="text" name="fileName" class="ct_input_g" 
@@ -157,7 +157,7 @@ function resetData(){
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01"  style="padding-top: 3px;">
-					<a href="javascript:fncAddProduct();">ë“±ë¡</a>
+					<a href="javascript:fncAddProduct();">µî·Ï</a>
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -167,7 +167,7 @@ function resetData(){
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01"	 style="padding-top: 3px;">
-					<a href="javascript:resetData();">ì·¨ì†Œ</a>
+					<a href="javascript:resetData();">Ãë¼Ò</a>
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

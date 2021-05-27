@@ -1,5 +1,7 @@
-<%@ page contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8" %>
-<%-->
+<%@ page contentType="text/html; charset=EUC-KR" pageEncoding="EUC_KR" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
 <%@ page import="com.model2.mvc.service.domain.Product" %>
 
 <%
@@ -9,7 +11,7 @@
 
 <html>
 <head>
-<title>ìƒí’ˆë“±ë¡</title>
+<title>»óÇ°µî·Ï</title>
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
@@ -25,7 +27,7 @@
 		<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="93%" class="ct_ttl01">ìƒí’ˆë“±ë¡</td>
+					<td width="93%" class="ct_ttl01">»óÇ°µî·Ï</td>
 					<td width="20%" align="right">&nbsp;</td>
 				</tr>
 			</table>
@@ -42,13 +44,13 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			ìƒí’ˆëª… <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			»óÇ°¸í <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="105">${vo.prodName}</td>
+					<td width="105">${product.prodName}</td>
 					<td></td>
 				</tr>
 			</table>
@@ -59,44 +61,44 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			ìƒí’ˆìƒì„¸ì •ë³´ <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			»óÇ°»ó¼¼Á¤º¸ <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${vo.prodDetail}</td>
+		<td class="ct_write01">${product.prodDetail}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			ì œì¡°ì¼ìž <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			Á¦Á¶ÀÏÀÚ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01"><${vo.manuDate}</td>
+		<td class="ct_write01">${product.manuDate}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			ê°€ê²© <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			°¡°Ý <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${vo.price}</td>
+		<td class="ct_write01">${product.price}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
-		<td width="104" class="ct_write">ìƒí’ˆì´ë¯¸ì§€</td>
+		<td width="104" class="ct_write">»óÇ°ÀÌ¹ÌÁö</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-		<!-- í…Œì´ë¸” ì‹œìž‘ -->
-			${vo.fileName}
+		<!-- Å×ÀÌºí ½ÃÀÛ -->
+		
 		<table border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td height="26">
-						${vo.fileName}
+						${product.fileName}
 					</td>
 				</tr>
 			</table>
@@ -117,7 +119,7 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01"  style="padding-top: 3px;">
-					<a href="/listProduct.do?menu=manage">í™•ì¸</a>
+					<a href="/listProduct.do?menu=manage">È®ÀÎ</a>
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -127,7 +129,7 @@
 					<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 				</td>
 				<td background="/images/ct_btnbg02.gif" class="ct_btn01"	 style="padding-top: 3px;">
-					<a href="/product/addProductView.jsp;">ì¶”ê°€ë“±ë¡</a>
+					<a href="/product/addProductView.jsp;">Ãß°¡µî·Ï</a>
 				</td>
 				<td width="14" height="23">
 					<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

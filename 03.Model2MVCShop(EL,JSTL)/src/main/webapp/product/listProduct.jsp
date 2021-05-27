@@ -8,13 +8,14 @@
 <%@page import="com.model2.mvc.common.util.CommonUtil"%>
 
 <%
-	List<Product> list= (List<Product>)request.getAttribute("list");
-	Page resultPage=(Page)request.getAttribute("resultPage");
-
+	List<Product> list = (List<Product>)request.getAttribute("list");
+	Page resultPage = (Page)request.getAttribute("resultPage");
+	
 	Search searchVO = (Search)request.getAttribute("searchVO");
-	//==> null 을 ""(nullString)으로 변경
-String searchCondition = CommonUtil.null2str(searchVO.getSearchCondition());
-String searchKeyword = CommonUtil.null2str(searchVO.getSearchKeyword());
+	//==>null 을 ""(nullString)으로 변경
+	
+	String searchCondition = CommonUtil.null2str(searchVO.getSearchCondition());
+	String searchKeyword = CommonUtil.null2str(searchVO.getSearchKeyword());
 %> /////////////////////// EL / JSTL 적용으로 주석 처리 ////////////////////////--%>
 
 
@@ -28,7 +29,7 @@ String searchKeyword = CommonUtil.null2str(searchVO.getSearchKeyword());
 <script type="text/javascript">
 <!--
 	//검색 / page 두가지 경우 모두 Form 전송을 위해 JavaScrpt 이용  
-	function fncGetProductList(currentPage) {
+	function fncGetList(currentPage) {
 		document.getElementById("currentPage").value = currentPage;
 		document.detailForm.submit();
 }
@@ -53,14 +54,16 @@ String searchKeyword = CommonUtil.null2str(searchVO.getSearchKeyword());
 				<tr>
 					<td width="93%" class="ct_ttl01">
 					
-						<c:choose>
+						 <c:choose>
 							<c:when test="${param.menu=='manage'}">
 							상품 관리
 							</c:when>							
 							<c:otherwise>
 							상품 검색
 							</c:otherwise>
-						</c:choose>							
+						</c:choose>				
+						
+						
 					</td>
 				</tr>
 			</table>
@@ -81,13 +84,13 @@ String searchKeyword = CommonUtil.null2str(searchVO.getSearchKeyword());
 				<option value="1" <%= (searchCondition.equals("1") ? "selected" : "")%>>상품명</option>
 				<option value="2" <%= (searchCondition.equals("2") ? "selected" : "")%>>상품가격</option>			
 				/////////////////////// EL / JSTL 적용으로 주석 처리 //////////////////////// --%>		
-				<option value="0" ${ ! empty searchVO.searchCondition && searchVO.searchCondition=='0' ? "selected" : "" }>상품번호</option>
-				<option value="1" ${ ! empty searchVO.searchCondition && searchVO.searchCondition=='1' ? "selected" : "" }>상품명</option>
-				<option value="2" ${ ! empty searchVO.searchCondition && searchVO.searchCondition=='2' ? "selected" : "" }>상품가격</option>
+				<option value="0" ${ ! empty search.searchCondition && search.searchCondition=='0' ? "selected" : "" }>상품번호</option>
+				<option value="1" ${ ! empty search.searchCondition && search.searchCondition=='1' ? "selected" : "" }>상품명</option>
+				<option value="2" ${ ! empty search.searchCondition && search.searchCondition=='2' ? "selected" : "" }>상품가격</option>
 		
 			</select>
 			<input 	type="text" name="searchKeyword"
-							value="${! empty searchVO.searchKeyword ? searchVO.searchKeyword : ""}" 
+							value="${! empty search.searchKeyword ? search.searchKeyword : ""}" 
 							class="ct_input_g" style="width:200px; height:19px" >
 		</td>
 		<td align="right" width="70">
@@ -97,7 +100,7 @@ String searchKeyword = CommonUtil.null2str(searchVO.getSearchKeyword());
 						<img src="/images/ct_btnbg01.gif" width="17" height="23">
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;">
-						<a href="javascript:fncGetProductList(1);">검색</a>
+						<a href="javascript:fncGetList;">검색</a>
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23">
@@ -157,7 +160,7 @@ String searchKeyword = CommonUtil.null2str(searchVO.getSearchKeyword());
 	
 	<c:set var="i" value="0"/>
 	<c:forEach var="product" items="${list}">
-		<c:set var="i" value="${i+1 }"/>
+		<c:set var="i" value="${i+1}"/>
 		<tr class="ct_list_pop">
 			<td align="center">${i}</td>
 			<td></td>
@@ -166,8 +169,10 @@ String searchKeyword = CommonUtil.null2str(searchVO.getSearchKeyword());
 			<td></td>
 			<td align="left">${product.price}</td>
 			<td></td>
-			<td align="left">${product.regDate}
-			</td>
+			<td align="left">${product.regDate}</td>
+			<td></td>
+		 	<td align="left">${purchase.tranCode}</td>
+
 		</tr>
 		<tr>
 		<td colspan="11" bgcolor="D6D7D6" height="1"></td>
@@ -180,7 +185,7 @@ String searchKeyword = CommonUtil.null2str(searchVO.getSearchKeyword());
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 	<tr>
 		<td align="center">
-		<input type="hidden" id="currentPage" name="currentPage" value=""/>
+		<input type="hidden" id="currentPage" name="currentPage" value="1"/>
 			<%-- /////////////////////// EL / JSTL 적용으로 주석 처리 //////////////////////// 
 			<% if( resultPage.getCurrentPage() <= resultPage.getPageUnit() ){ %>
 					◀ 이전
@@ -199,7 +204,7 @@ String searchKeyword = CommonUtil.null2str(searchVO.getSearchKeyword());
 			<% } %>
 			 /////////////////////// EL / JSTL 적용으로 주석 처리 //////////////////////// --%>
     		
-    	<jsp:include page="../common/pageNavigator2.jsp"/>
+    	<jsp:include page="../common/pageNavigator.jsp"/>
     	
     	</td>
 	</tr>

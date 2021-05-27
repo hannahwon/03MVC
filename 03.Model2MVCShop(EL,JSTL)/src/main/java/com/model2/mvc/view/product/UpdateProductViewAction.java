@@ -23,7 +23,7 @@ public class UpdateProductViewAction extends Action{
 		Product productVO=service.getProduct(prodNo);
 		System.out.println(productVO);
 		
-		request.setAttribute("ProductVO", productVO);
+		request.setAttribute("vo", productVO);
 		
 		return "forward:/product/updateProductView.jsp";
 	}

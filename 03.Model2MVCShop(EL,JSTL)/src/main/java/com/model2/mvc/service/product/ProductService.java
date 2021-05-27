@@ -12,7 +12,7 @@ public interface ProductService {
 
 	public Product getProduct(int productVo) throws Exception;
 
-	public Map<String, Object> getProductList(Search searchVO) throws Exception;
+	public Map<String,Object> getProductList(Search searchVO) throws Exception;
 
 	public void updateProduct(Product productVO) throws Exception;
 	

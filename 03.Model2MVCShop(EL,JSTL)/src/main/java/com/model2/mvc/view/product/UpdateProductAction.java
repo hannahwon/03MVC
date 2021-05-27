@@ -25,16 +25,16 @@ public class UpdateProductAction extends Action {
 		productVO.setManuDate(request.getParameter("manuDate"));
 		productVO.setPrice(Integer.parseInt(request.getParameter("price")));
 		productVO.setFileName(request.getParameter("fileName"));
-		System.out.println("½ÃÀÛÇØºÁ¶ó");
+		System.out.println("updateProductAction.java setting ì™„ë£Œ");
 		
 		ProductService service=new ProductServiceImpl();
 		service.updateProduct(productVO);
 		
 		
 		/*HttpSession session=request.getSession();
-		System.out.println("¿ä ½ÃÀÛÇØÇØÇØ¤ÀÇØ");
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¤ï¿½ï¿½ï¿½");
 		int sessionId=((ProductVO)session.getAttribute("product")).getProdNo();
-		System.out.println("sessionId°¡ Àß µé¾î°¬À¸¸é ½ÇÇà"+sessionId);
+		System.out.println("sessionIdï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½î°¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½"+sessionId);
 		
 		if(sessionId==prodNo){
 			session.setAttribute("product", productVO);
